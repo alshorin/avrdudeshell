@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-08-31T21:12:06
 #
 #-------------------------------------------------
-CONFIG += serialport
-QT       += core gui
+QT += serialport
+QT       += core gui widgets
 QT       += sql
 
 TARGET = avrdudeshell
@@ -16,5 +16,6 @@ SOURCES += main.cpp\
 
 HEADERS += \
     mainwindow.h
+
 
 

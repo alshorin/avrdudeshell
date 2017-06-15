@@ -1,5 +1,6 @@
-#include <QtSerialPort/QSerialPort>
-#include <QtSerialPort/QSerialPortInfo>
+#include "include/QtSerialPort/qserialportglobal.h"
+#include "include/QtSerialPort/qserialport.h"
+#include "include/QtSerialPort/qserialportinfo.h"
 #include "mainwindow.h"
 //not use the dnamtic libs
 //#include "QtSerialPort/QSerialPort"
@@ -116,7 +117,7 @@ void MainWindow::readConfig()
     //char * buf[];
     //QString filePath=QFileDialog::getOpenFileName(this,"Open Config File",".","config File(*.conf)");
     //QFile file(filePath);
-    QFile file("./avrdude.conf");// to-do: change the file path.
+    QFile file("/home/al/avrdude.conf");// to-do: change the file path.
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text)) qDebug()<<" can't read the file 'avrdude.conf' !"<<endl;
 
     //QTextStream in(&file);
@@ -124,7 +125,7 @@ void MainWindow::readConfig()
 
     qint64 ulSize=file.size();
     char *buf=new char[ulSize+1];
-    buf[ulSize]=NULL;
+    buf[ulSize]='\0';
     file.read(buf,ulSize);
 
     //file.readData(buf,ulSize);
@@ -154,12 +155,14 @@ void MainWindow::readConfig()
         //programmerCB->setItemData(p);
         //outputText->append(sp);
         pos+=strLoc;
+        delete p;
     }
     pos=buf;
     for(;;)
     {
         QVariant v;
         PARTDEV * p=new PARTDEV;
+        //PARTDEV p;
         qint64 strLoc=0;
         QString str="\npart";
         QString sp=parse(pos,str,str,&strLoc);
@@ -224,6 +227,7 @@ void MainWindow::readConfig()
         this->chipCB->addItem(p->sDesc,v);
 
         pos+=strLoc;
+        delete p;
     }
 
     delete[] buf;
@@ -261,6 +265,7 @@ bool MainWindow::createConnection()
     bool existFlag = true;
     QSqlDatabase db =QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("mydb.db");
+
     if(!QFile::exists("mydb.db")) // check the database file exist.
     {
         qDebug()<<QString(" database is not exist.");
@@ -273,13 +278,14 @@ bool MainWindow::createConnection()
         QMessageBox::critical(0,QObject::tr("Database Error!"),db.lastError().text());
         return false;
     }
+
     if(!existFlag)
     {
-    QSqlQuery  query;
-    query.exec("create table student(id int primary key,name varchar)");
-    query.exec("insert into student values(1,'xiaoguang')");
+        QSqlQuery  query;
+        query.exec("create table student(id int primary key,name varchar)");
+        query.exec("insert into student values(1,'xiaoguang')");
     }
-       return true;
+    return true;
     //
 }
 

@@ -1,26 +1,26 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QMainWindow>
-#include <QtGui/QWidget>
-#include <QtGui/QGroupBox>
-#include <QtGui/QLineEdit>
-#include <QtGui/QPushButton>
-#include <QtGui/QComboBox>
-#include <QtGui/QCheckBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QGridLayout>
-#include <QtGui/QTableWidget>
-#include <QtGui/QBitmap>
-#include <QtGui/QLabel>
-#include <QtGui/QTextBrowser>
-#include <QtGui/QFileDialog>
+#include <QMainWindow>
+#include <QWidget>
+#include <QGroupBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QTableWidget>
+#include <QBitmap>
+#include <QLabel>
+#include <QTextBrowser>
+#include <QFileDialog>
 #include <QDebug>
-#include <QtGui/QRadioButton>
+#include <QRadioButton>
 #include <QProcess>
-#include<QtSql>
-#include<QMessageBox>
+#include <QtSql>
+#include <QMessageBox>
 
 
 class QSerialPort;
@@ -93,6 +93,7 @@ struct PROGDEV
     QString sDesc;
     QString sType;
 };
+
 struct PARTDEV
 {
     QString sID;//we use this for avrdude command line -p
