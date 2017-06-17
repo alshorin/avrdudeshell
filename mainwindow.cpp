@@ -1,6 +1,9 @@
-#include "include/QtSerialPort/qserialportglobal.h"
-#include "include/QtSerialPort/qserialport.h"
-#include "include/QtSerialPort/qserialportinfo.h"
+//#include "include/QtSerialPort/qserialportglobal.h"
+//#include "include/QtSerialPort/qserialport.h"
+//#include "include/QtSerialPort/qserialportinfo.h"
+#include "qserialportglobal.h"
+#include "qserialport.h"
+#include "qserialportinfo.h"
 #include "mainwindow.h"
 //not use the dnamtic libs
 //#include "QtSerialPort/QSerialPort"
